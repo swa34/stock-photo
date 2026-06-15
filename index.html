@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elizabeth Allen | Stock Photography</title>
+    <style>
+        :root {
+            --primary: #222;
+            --bg: #f8f9fa;
+            --accent: #000000;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg);
+            color: var(--primary);
+        }
+        header {
+            text-align: center;
+            padding: 4rem 1rem;
+            background: white;
+            border-bottom: 1px solid #eaeaea;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+            letter-spacing: -0.5px;
+            font-weight: 800;
+        }
+        header p {
+            color: #666;
+            margin-top: 1rem;
+            font-size: 1.1rem;
+        }
+        .gallery-container {
+            max-width: 1200px;
+            margin: 3rem auto;
+            padding: 0 1rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+        .photo-card {
+            background: white;
+            border-radius: 6px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            cursor: pointer;
+        }
+        .photo-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.08);
+        }
+        .photo-card img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            display: block;
+        }
+        .photo-info {
+            padding: 1.2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .photo-title {
+            font-weight: 600;
+            margin: 0;
+            font-size: 1.05rem;
+        }
+        .photo-price {
+            background: var(--bg);
+            padding: 0.3rem 0.6rem;
+            border-radius: 4px;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+        
+        /* Modal Styles */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.85);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            padding: 1rem;
+            backdrop-filter: blur(5px);
+        }
+        .modal-content {
+            background: white;
+            border-radius: 8px;
+            max-width: 1000px;
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            overflow: hidden;
+            position: relative;
+        }
+        .close-btn {
+            position: absolute;
+            top: 1rem;
+            right: 1.5rem;
+            background: none;
+            border: none;
+            font-size: 2rem;
+            cursor: pointer;
+            color: #999;
+            transition: color 0.2s;
+        }
+        .close-btn:hover {
+            color: #000;
+        }
+        .modal-image {
+            background: #f0f0f0;
+        }
+        .modal-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        .modal-details {
+            padding: 3rem 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .modal-details h2 {
+            margin-top: 0;
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+        .license-text {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+        }
+        .keywords {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin: 1.5rem 0;
+        }
+        .keyword-tag {
+            background: #f1f3f5;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            color: #495057;
+            text-transform: lowercase;
+        }
+        .buy-btn {
+            background: var(--accent);
+            color: white;
+            border: none;
+            padding: 1.2rem;
+            border-radius: 6px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 1rem;
+            transition: background 0.2s, transform 0.1s;
+        }
+        .buy-btn:hover {
+            background: #333;
+        }
+        .buy-btn:active {
+            transform: scale(0.98);
+        }
+
+        @media (max-width: 768px) {
+            .modal-content {
+                grid-template-columns: 1fr;
+                max-height: 90vh;
+                overflow-y: auto;
+            }
+            .modal-image img {
+                height: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Elizabeth Allen Stock Photography</h1>
+        <p>High-resolution digital downloads for commercial and personal use.</p>
+    </header>
+
+    <div class="gallery-container">
+        <!-- Photo 1 -->
+        <div class="photo-card" onclick="openModal('https://images.unsplash.com/photo-1472396961693-142e6e26ce82?auto=format&fit=crop&w=1200&q=80', 'Mountain Lake Peak', '$25.00', ['nature', 'landscape', 'mountains', 'water'])">
+            <img src="https://images.unsplash.com/photo-1472396961693-142e6e26ce82?auto=format&fit=crop&w=600&q=80" alt="Mountain Lake">
+            <div class="photo-info">
+                <p class="photo-title">Mountain Lake Peak</p>
+                <span class="photo-price">$25</span>
+            </div>
+        </div>
+
+        <!-- Photo 2 -->
+        <div class="photo-card" onclick="openModal('https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=1200&q=80', 'Morning Forest Path', '$15.00', ['forest', 'trees', 'morning', 'hiking'])">
+            <img src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=600&q=80" alt="Forest Path">
+            <div class="photo-info">
+                <p class="photo-title">Morning Forest Path</p>
+                <span class="photo-price">$15</span>
+            </div>
+        </div>
+
+        <!-- Photo 3 -->
+        <div class="photo-card" onclick="openModal('https://images.unsplash.com/photo-1506744626753-eda81829cd13?auto=format&fit=crop&w=1200&q=80', 'Ocean Sunset Aerial', '$30.00', ['ocean', 'sunset', 'aerial', 'waves'])">
+            <img src="https://images.unsplash.com/photo-1506744626753-eda81829cd13?auto=format&fit=crop&w=600&q=80" alt="Ocean Sunset">
+            <div class="photo-info">
+                <p class="photo-title">Ocean Sunset Aerial</p>
+                <span class="photo-price">$30</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- The Modal (Lightbox / Checkout Simulation) -->
+    <div class="modal-overlay" id="photoModal" onclick="closeModal(event)">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <button class="close-btn" onclick="closeModal(event)">&times;</button>
+            <div class="modal-image">
+                <img id="modalImg" src="" alt="Full size image">
+            </div>
+            <div class="modal-details">
+                <h2 id="modalTitle">Photo Title</h2>
+                <div class="license-text">✓ Standard Commercial License<br>✓ High Resolution JPEG Download</div>
+                <div class="keywords" id="modalKeywords">
+                    <!-- Keywords injected via JavaScript -->
+                </div>
+                <button class="buy-btn" id="modalBuyBtn" onclick="alert('This is where the secure Snipcart checkout drawer would slide out!')">Buy License - $0</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const modal = document.getElementById('photoModal');
+        const modalImg = document.getElementById('modalImg');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalKeywords = document.getElementById('modalKeywords');
+        const modalBuyBtn = document.getElementById('modalBuyBtn');
+
+        function openModal(imgSrc, title, price, keywords) {
+            modalImg.src = imgSrc;
+            modalTitle.textContent = title;
+            modalBuyBtn.textContent = `Buy License - ${price}`;
+            
+            // Generate the keyword tags dynamically
+            modalKeywords.innerHTML = '';
+            keywords.forEach(keyword => {
+                const span = document.createElement('span');
+                span.className = 'keyword-tag';
+                span.textContent = `#${keyword}`;
+                modalKeywords.appendChild(span);
+            });
+
+            // Show the modal
+            modal.style.display = 'flex';
+        }
+
+        function closeModal(event) {
+            if(event) event.stopPropagation();
+            modal.style.display = 'none';
+        }
+
+        // Close modal if the user hits the Escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === "Escape") {
+                closeModal();
+            }
+        });
+    </script>
+
+    <!-- 
+      Technical Note: 
+      To make the buy button actually process credit cards and deliver the files on GitHub Pages, 
+      you would paste the Snipcart HTML snippet right here before the closing body tag. 
+    -->
+</body>
+</html>
