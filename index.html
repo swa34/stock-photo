@@ -188,7 +188,19 @@
   .est-card .yr{font-family:var(--mono);font-size:11.5px;color:var(--ink-soft);margin-top:4px}
   .est-card.cheap{border-color:var(--teal);background:var(--teal-tint)}
   .est-card.cheap .mo{color:var(--teal-ink)}
-  .est-note{font-family:var(--mono);font-size:11.5px;color:var(--ink-soft);margin-top:14px}
+  .est-note{font-family:var(--mono);font-size:11.5px;color:var(--ink-soft);margin-top:14px;line-height:1.5}
+  .est-note b{color:var(--ink);font-weight:600}
+  .egress-switch{display:flex;align-items:center;flex-wrap:wrap;gap:8px 12px;margin:2px 0 18px}
+  .egress-switch .switch-label{font-family:var(--mono);font-size:12px;color:var(--ink-soft)}
+  .eg-group{display:inline-flex;border:1px solid var(--line-strong);border-radius:8px;overflow:hidden}
+  .eg-btn{font-family:var(--mono);font-size:12px;font-weight:600;color:var(--ink-soft);background:var(--paper);border:0;border-right:1px solid var(--line);padding:7px 14px;cursor:pointer}
+  .eg-btn:last-child{border-right:0}
+  .eg-btn:hover{background:var(--paper-3)}
+  .eg-btn.active{background:var(--accent);color:#fff}
+  .est-card .mo{font-size:1.32rem}
+  .est-card .breakdown{font-family:var(--mono);font-size:10.5px;color:var(--ink-soft);margin-top:6px;line-height:1.35}
+  .est-card .breakdown .eg-hot{color:var(--accent-ink);font-weight:700}
+  .est-card .breakdown .eg-zero{color:var(--teal-ink);font-weight:700}
 
   /* ---------- decision ---------- */
   .decide-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px;margin:1.4rem 0}
@@ -244,13 +256,8 @@
   <div class="wrap">
     <p class="eyebrow">Research summary · self-guided</p>
     <h1>Storing your photos &amp; selling them online</h1>
-    <p class="lede">Three honest ways to turn a large photo archive into a stock storefront — and what each one really costs, stores, and asks of you.</p>
-    <div class="meta-chips">
-      <span class="chip">Compiled <b>June 2026</b></span>
-      <span class="chip">One self-contained <b>HTML file</b></span>
-      <span class="chip">No jargon left undefined</span>
-      <span class="chip">Every claim has a <b>source link</b></span>
-    </div>
+    <p class="lede">Three ways to turn a  photo archive into a stock storefront — and what each one  costs, stores.</p>
+    
   </div>
 </header>
 
@@ -268,7 +275,6 @@
       <li><strong>The archive</strong> is your private master collection — the big RAW files straight off the camera (roughly <strong>25–60&nbsp;MB each</strong>). Nobody buys these. They just need to exist forever, safely, and cheaply.</li>
       <li><strong>The storefront</strong> is the public website. It only ever shows <strong>high-resolution JPEGs</strong> (roughly <strong>2–15&nbsp;MB each</strong>) exported from Lightroom. That is the industry norm — stock buyers receive JPEGs, never RAW.</li>
     </ul>
-    <p>Because the two are decoupled, you can clear the heavy RAW files off your laptop without ever breaking the live site. The website never needed them.</p>
 
     <figure>
       <svg viewBox="0 0 840 330" role="img" aria-labelledby="t-split d-split">
@@ -401,9 +407,16 @@
       </table>
     </div>
 
+    <div class="callout">
+      <span class="tag">Worked example · 15 TB on Backblaze B2</span>
+      <p><strong>Storage:</strong> 15 TB × $6.95 = <span class="price">≈ $104/mo</span>.</p>
+      <p><strong>Free downloads:</strong> the allowance is 3× what you store = <strong>45 TB every month</strong>. A medium month — pulling back a few TB of files (say 5 TB) — sits well inside that, so egress is <span class="free">$0</span>.</p>
+      <p><strong>All-in ≈ <span class="price">$104/mo</span>.</strong> The ~$10/TB rate only starts once downloads pass 45 TB in a single month — e.g. a heavy 50 TB month adds just 5 × $10 = <span class="price">$50</span>.</p>
+    </div>
+
     <div class="callout teal">
-      <span class="tag">Plain-English takeaway</span>
-      <p>For most photographers the answer is <strong>Backblaze B2</strong> (cheap, generous free downloads) or <strong>Cloudflare R2</strong> if you’ll pull files often (downloads are always free). Reach for <strong>Glacier Deep Archive</strong> only for a deep-freeze copy you hope to never open. Avoid parking a big archive on <strong>S3 Standard</strong> unless you’ve done the egress math.</p>
+      <span class="tag">takeaway</span>
+      <p> <strong>Backblaze B2</strong> (cheap, generous free downloads) , You can always switch to <strong>Cloudflare R2</strong> if you start to see a large amount of pull files (downloads are always free). Use for <strong>Glacier Deep Archive</strong> only for a deep-freeze copy you hope to never open.</p>
     </div>
 
     <!-- cost bar chart -->
@@ -450,15 +463,24 @@
     <div class="estimator" id="est">
       <div class="ehead">
         <h3>Quick cost estimator</h3>
-        <div class="reads">Archive size: <b id="est-tb">5</b> TB</div>
+        <div class="reads">Archive: <b id="est-tb">5</b> TB &nbsp;·&nbsp; downloads: <b id="est-eg">0</b> TB/mo</div>
       </div>
       <input type="range" id="est-range" min="0.5" max="50" step="0.5" value="5" aria-label="Archive size in terabytes">
       <div class="ticks"><span>0.5 TB</span><span>10</span><span>20</span><span>30</span><span>40</span><span>50 TB</span></div>
+      <div class="egress-switch">
+        <span class="switch-label">Downloads / month (egress):</span>
+        <div class="eg-group" id="eg-group" role="group" aria-label="Monthly downloads in terabytes">
+          <button type="button" class="eg-btn active" data-eg="0">None</button>
+          <button type="button" class="eg-btn" data-eg="5">5 TB</button>
+          <button type="button" class="eg-btn" data-eg="20">20 TB</button>
+          <button type="button" class="eg-btn" data-eg="50">50 TB</button>
+        </div>
+      </div>
       <div class="est-grid" id="est-grid">
         <!-- filled by JS; static fallback below for no-JS -->
         <noscript><p class="mono" style="font-size:12px">Enable JavaScript for the live estimate, or use the per-TB rates in the table above (e.g. 5&nbsp;TB on Backblaze B2 ≈ $34.75/mo).</p></noscript>
       </div>
-      <p class="est-note">Storage only, at list rates — excludes any download/egress fees. For planning, not a quote.</p>
+      <p class="est-note">Totals = storage + egress, at list rates. Egress models: <b>B2</b> free up to 3× stored, then $10/TB · <b>R2</b> always $0 · <b>S3</b> ~$90/TB · <b>Glacier</b> ~$110/TB <em>and</em> slow (restores take hours). For planning, not a quote.</p>
     </div>
   </div>
 </section>
@@ -468,43 +490,41 @@
   <div class="wrap">
     <p class="eyebrow"><span class="secnum">03</span> · Don't lose the originals</p>
     <h2>The 3-2-1 rule</h2>
-    <p class="lede">A storefront is replaceable. The original photographs are not. The 3-2-1 rule — coined by photographer Peter Krogh in <em>The DAM Book</em> — is the standard insurance policy.</p>
+    <p class="lede">A storefront is replaceable. The original photographs are not. </p>
 
     <figure>
-      <svg viewBox="0 0 820 280" role="img" aria-labelledby="t-321 d-321">
+      <svg viewBox="0 0 820 235" role="img" aria-labelledby="t-321 d-321">
         <title id="t-321">The 3-2-1 backup rule</title>
         <desc id="d-321">Three copies of your files, on two different kinds of media, with one copy stored off-site.</desc>
-        <!-- copy 1 -->
-        <rect class="d-box" x="24" y="40" width="210" height="120" rx="11"/>
-        <rect x="58" y="66" width="60" height="44" rx="4" fill="none" stroke="var(--ink-soft)" stroke-width="1.5"/>
-        <rect x="70" y="112" width="36" height="8" rx="2" fill="var(--ink-soft)"/>
-        <text class="d-lbl" x="129" y="86">Working copy</text>
-        <text class="d-row" x="129" y="106">Internal SSD / NAS</text>
-        <text class="d-head-teal" x="129" y="142">MEDIA TYPE A</text>
-        <!-- copy 2 -->
-        <rect class="d-box" x="294" y="40" width="210" height="120" rx="11"/>
-        <rect x="328" y="70" width="52" height="38" rx="4" fill="none" stroke="var(--ink-soft)" stroke-width="1.5"/>
-        <circle cx="354" cy="89" r="5" fill="none" stroke="var(--ink-soft)" stroke-width="1.5"/>
-        <text class="d-lbl" x="399" y="86">Local backup</text>
-        <text class="d-row" x="399" y="106">External HDD, auto-clone</text>
-        <text class="d-head-teal" x="399" y="142">MEDIA TYPE B</text>
-        <!-- copy 3 -->
-        <rect class="d-box-teal" x="564" y="40" width="232" height="120" rx="11"/>
-        <path d="M598 96 a16 16 0 0 1 30 -6 a13 13 0 0 1 6 25 h-34 a13 13 0 0 1 -2 -19 z" fill="none" stroke="var(--teal)" stroke-width="1.6"/>
-        <text class="d-lbl" x="648" y="86">Off-site copy</text>
-        <text class="d-row" x="648" y="106">Object storage / online backup</text>
-        <text class="d-head" x="648" y="142">1 COPY OFF-SITE</text>
+        <!-- copy 1: working -->
+        <rect class="d-box" x="24" y="28" width="212" height="130" rx="11"/>
+        <rect x="104" y="44" width="52" height="34" rx="4" fill="none" stroke="var(--ink-soft)" stroke-width="1.5"/>
+        <rect x="120" y="80" width="20" height="5" rx="2" fill="var(--ink-soft)"/>
+        <text class="d-lbl" x="130" y="100" text-anchor="middle">Working copy</text>
+        <text class="d-row" x="130" y="118" text-anchor="middle">Internal SSD</text>
+        <text class="d-row" x="130" y="134" text-anchor="middle">or local NAS</text>
+        <text class="d-head-teal" x="130" y="152" text-anchor="middle">MEDIA TYPE A</text>
+        <!-- copy 2: local backup -->
+        <rect class="d-box" x="304" y="28" width="212" height="130" rx="11"/>
+        <rect x="384" y="46" width="52" height="32" rx="4" fill="none" stroke="var(--ink-soft)" stroke-width="1.5"/>
+        <circle cx="410" cy="62" r="5" fill="none" stroke="var(--ink-soft)" stroke-width="1.5"/>
+        <text class="d-lbl" x="410" y="100" text-anchor="middle">Local backup</text>
+        <text class="d-row" x="410" y="118" text-anchor="middle">External HDD</text>
+        <text class="d-row" x="410" y="134" text-anchor="middle">auto-cloned nightly</text>
+        <text class="d-head-teal" x="410" y="152" text-anchor="middle">MEDIA TYPE B</text>
+        <!-- copy 3: off-site -->
+        <rect class="d-box-teal" x="584" y="28" width="212" height="130" rx="11"/>
+        <path d="M672 56 a16 16 0 0 1 30 -6 a13 13 0 0 1 6 25 h-34 a13 13 0 0 1 -2 -19 z" fill="none" stroke="var(--teal)" stroke-width="1.6"/>
+        <text class="d-lbl" x="690" y="100" text-anchor="middle">Off-site copy</text>
+        <text class="d-row" x="690" y="118" text-anchor="middle">Object storage</text>
+        <text class="d-row" x="690" y="134" text-anchor="middle">or online backup</text>
+        <text class="d-head" x="690" y="152" text-anchor="middle">1 COPY OFF-SITE</text>
         <!-- bracket -->
-        <path class="d-arrow" d="M24 196 L24 210 L796 210 L796 196" marker-end="" style="stroke:var(--line-strong)"/>
-        <text class="d-lbl" x="410" y="236" text-anchor="middle">3 copies total &nbsp;·&nbsp; 2 different kinds of media &nbsp;·&nbsp; 1 of them off-site</text>
+        <path d="M24 178 L24 190 L796 190 L796 178" fill="none" style="stroke:var(--line-strong)" stroke-width="1.5"/>
+        <text class="d-lbl" x="410" y="216" text-anchor="middle">3 copies total &nbsp;·&nbsp; 2 different media &nbsp;·&nbsp; 1 kept off-site</text>
       </svg>
       <figcaption><b>3 — 2 — 1.</b> Three copies means one working file plus two backups. Two media types means a drive failure can’t take them all. One off-site copy survives a fire, theft, or ransomware at home. The cloud archive from the last section <em>is</em> your off-site copy.</figcaption>
     </figure>
-
-    <div class="callout">
-      <span class="tag">Watch out</span>
-      <p>A “backup” service like <strong>Backblaze Personal</strong> ($99/yr, unlimited) mirrors your computer — but it <strong>purges files from external drives you don’t reconnect within ~30 days</strong>. For a true permanent archive, pair it with object storage (Section 02), which never forgets.</p>
-    </div>
   </div>
 </section>
 
@@ -601,7 +621,7 @@
             <rect class="d-box-shop d-ext" x="160" y="286" width="400" height="46" rx="8"/>
             <text class="d-lbl" x="360" y="314" text-anchor="middle">Stripe / PayPal — EXTERNAL</text>
           </svg>
-          <figcaption><b>Two external pieces (dashed).</b> Cheap object storage holds the heavy images so the host stays fast; a payment processor takes the money. You maintain the glue.</figcaption>
+          <figcaption><b>Two external pieces (dashed).</b> Cheap object storage holds the heavy images so the host stays fast; a payment processor takes the money.</figcaption>
         </figure>
         <div class="specs">
           <dl>
@@ -613,10 +633,6 @@
             <dt>Effort</dt><dd><span class="pill neutral">Highest</span> — you own updates, security, backups</dd>
             <dt>Best for</dt><dd>Full control, custom design, and lowest cost <em>at large scale</em></dd>
           </dl>
-          <div class="callout" style="margin-top:14px">
-            <span class="tag">Research note</span>
-            <p>Older guides recommend the <strong>Symbiostock</strong> plugin. It was <strong>discontinued in December 2023</strong> and pulled for a security issue — don’t build on it. The current path is <strong>Easy Digital Downloads</strong> (or WooCommerce) plus a media-offload plugin.</p>
-          </div>
         </div>
       </div>
     </article>
@@ -668,10 +684,6 @@
             <dt>Effort</dt><dd><span class="pill neutral">Highest</span> — you own the code, security, uptime &amp; scaling</dd>
             <dt>Best for</dt><dd>A specific vision no existing platform can deliver — ideally with a developer on hand</dd>
           </dl>
-          <div class="callout" style="margin-top:14px">
-            <span class="tag">When custom is worth it</span>
-            <p>Only choose this if Options A and B genuinely can’t do what you need — you’d be building and maintaining real software. For most photographers, <strong>WordPress (Option B) gives most of the control for a fraction of the effort.</strong></p>
-          </div>
         </div>
       </div>
     </article>
@@ -685,7 +697,6 @@
     <h2>The three storefronts at a glance</h2>
     <div class="table-scroll">
       <table>
-        <caption>Storefront comparison, June 2026. “External storage” = a separate service you sign up &amp; pay for to hold the sellable files.</caption>
         <thead>
           <tr>
             <th>&nbsp;</th>
@@ -746,10 +757,6 @@
         </tbody>
       </table>
     </div>
-    <div class="callout teal">
-      <span class="tag">How to read this</span>
-      <p>Effort and control rise from left to right. <strong>A</strong> trades money for convenience (pay monthly, do nothing). <strong>B</strong> is cheapest at scale but you become the IT department. <strong>C</strong> gives total control — at the price of building and running real software.</p>
-    </div>
   </div>
 </section>
 
@@ -775,35 +782,13 @@
       <div class="decide-card">
         <span class="if">If you want…</span>
         <div class="then">A one-of-a-kind site</div>
-        <p>…that no existing platform can produce — and you have a developer on hand — build it <strong>totally custom</strong> (Option C) in Python or Node. Most control, most work.</p>
+        <p>…that no existing platform can produce <strong>totally custom</strong> (Option C) in Python or Node. Most control, most work.</p>
         <span class="cost">≈ $15–60 / month infra + build time</span>
       </div>
-    </div>
-    <div class="callout">
-      <span class="tag">In every case</span>
-      <p>The storefront is separate from the <strong>archive</strong>. Whichever path you choose, keep the RAW masters in object storage under the <strong>3-2-1 rule</strong> (Sections 02–03). The shop can be rebuilt; the originals cannot.</p>
     </div>
   </div>
 </section>
 
-<!-- ===================== GLOSSARY ===================== -->
-<section id="glossary">
-  <div class="wrap">
-    <p class="eyebrow"><span class="secnum">07</span> · Plain definitions</p>
-    <h2>Glossary</h2>
-    <dl class="gloss">
-      <dt>Object storage</dt><dd>Cloud storage priced by the terabyte, built to hold huge numbers of files cheaply. No “synced folder” — you push/pull with an app.</dd>
-      <dt>Egress</dt><dd>The fee some providers charge to <em>download</em> your own files back out. The sneaky part of a cloud bill.</dd>
-      <dt>RAW vs JPEG</dt><dd>RAW = the camera’s big original negative. JPEG = the compressed export buyers actually receive.</dd>
-      <dt>3-2-1 rule</dt><dd>3 copies, on 2 media types, 1 kept off-site. The standard backup insurance for photographers.</dd>
-      <dt>Cloud server (VPS / PaaS)</dt><dd>A computer you rent in a data center to run a custom app, billed monthly (~$5–25). “PaaS” is a friendlier, more managed version of the same idea.</dd>
-      <dt>Managed database</dt><dd>A hosted database (usually PostgreSQL) a custom site uses to track its photos, prices, and orders.</dd>
-      <dt>Payment processor</dt><dd>A service like Stripe or PayPal that takes the card payment — roughly 2.9% + 30¢ per sale.</dd>
-      <dt>IPTC metadata</dt><dd>The caption/keyword tags embedded inside a photo. Storefront search engines read these to make images findable.</dd>
-      <dt>Media offloading</dt><dd>Automatically moving a website’s big image files to cheap object storage so the site itself stays small and fast.</dd>
-    </dl>
-  </div>
-</section>
 
 <!-- ===================== SOURCES ===================== -->
 <section id="sources">
@@ -863,44 +848,71 @@
 
 <footer>
   <div class="wrap">
-    <p class="fineprint">Compiled June 2026 from independent research for self-guided reading. Every price and storage figure is a list rate that changes often — always confirm on the provider’s official page (linked above) before deciding or buying. A few figures (Wasabi’s July 2026 increase, some platform commission rates, Google One’s 2026 plan reshuffle) were the least certain at compile time.</p>
+    <p class="fineprint">Compiled June 2026 from independent research for self-guided reading. Every price and storage figure is a list rate they change often so check them.</p>
     <p class="totop" style="margin-top:18px"><a href="#concept">↑ Back to top</a></p>
   </div>
 </footer>
 
 <script>
   (function(){
-    var rates = [
-      {name:"S3 Glacier Deep", rate:1.01, note:"cold vault"},
-      {name:"Backblaze B2", rate:6.95, note:"the default"},
-      {name:"Cloudflare R2", rate:15.36, note:"$0 egress"},
-      {name:"AWS S3 Standard", rate:23.55, note:"+ egress"}
+    var providers = [
+      {name:"S3 Glacier Deep", store:1.01,  egPerTB:110, storeLbl:"$1.01",  egLbl:"~$110/TB"},
+      {name:"Backblaze B2",    store:6.95,  egPerTB:10,  free3x:true, storeLbl:"$6.95",  egLbl:"$10/TB"},
+      {name:"Cloudflare R2",   store:15.36, egPerTB:0,   storeLbl:"$15.36", egLbl:"$0"},
+      {name:"AWS S3 Standard", store:23.55, egPerTB:90,  storeLbl:"$23.55", egLbl:"$90/TB"}
     ];
-    var range = document.getElementById('est-range');
-    var grid  = document.getElementById('est-grid');
-    var tbOut = document.getElementById('est-tb');
+    var range   = document.getElementById('est-range');
+    var grid    = document.getElementById('est-grid');
+    var tbOut   = document.getElementById('est-tb');
+    var egOut   = document.getElementById('est-eg');
+    var egGroup = document.getElementById('eg-group');
     if(!range || !grid) return;
+    var egress = 0;
 
-    function money(n){ return '$' + n.toLocaleString(undefined,{minimumFractionDigits:2, maximumFractionDigits:2}); }
+    function money(n){
+      if(n >= 1000) return '$' + Math.round(n).toLocaleString();
+      return '$' + n.toLocaleString(undefined,{minimumFractionDigits:2, maximumFractionDigits:2});
+    }
+    function whole(n){ return '$' + Math.round(n).toLocaleString(); }
+
+    function egressCost(p, storeTB, egTB){
+      if(egTB <= 0 || p.egPerTB === 0) return 0;
+      var billable = p.free3x ? Math.max(0, egTB - 3 * storeTB) : egTB;
+      return billable * p.egPerTB;
+    }
 
     function render(){
       var tb = parseFloat(range.value);
       tbOut.textContent = (tb % 1 === 0) ? tb : tb.toFixed(1);
-      var cheapest = Math.min.apply(null, rates.map(function(r){return r.rate;}));
+      egOut.textContent = egress;
+      var totals = providers.map(function(p){ return p.store * tb + egressCost(p, tb, egress); });
+      var cheapest = Math.min.apply(null, totals);
       var html = '';
-      rates.forEach(function(r){
-        var mo = tb * r.rate;
-        var cls = (r.rate === cheapest) ? 'est-card cheap' : 'est-card';
+      providers.forEach(function(p){
+        var storeCost = p.store * tb;
+        var egCost = egressCost(p, tb, egress);
+        var total = storeCost + egCost;
+        var cls = (total === cheapest) ? 'est-card cheap' : 'est-card';
+        var egCls = egCost > 0 ? 'eg-hot' : 'eg-zero';
         html += '<div class="'+cls+'">'
-              + '<div class="name">'+r.name+'</div>'
-              + '<div class="rate">$'+r.rate.toFixed(2)+'/TB · '+r.note+'</div>'
-              + '<div class="mo">'+money(mo)+'<span style="font-size:.6em;font-weight:400"> /mo</span></div>'
-              + '<div class="yr">'+money(mo*12)+' / year</div>'
+              + '<div class="name">'+p.name+'</div>'
+              + '<div class="rate">store '+p.storeLbl+' · egress '+p.egLbl+'</div>'
+              + '<div class="mo">'+money(total)+'<span style="font-size:.55em;font-weight:400"> /mo</span></div>'
+              + '<div class="breakdown">'+whole(storeCost)+' store + <span class="'+egCls+'">'+whole(egCost)+' egress</span></div>'
+              + '<div class="yr">'+money(total*12)+' / year</div>'
               + '</div>';
       });
       grid.innerHTML = html;
     }
+
     range.addEventListener('input', render);
+    egGroup.addEventListener('click', function(e){
+      var btn = e.target.closest('.eg-btn');
+      if(!btn) return;
+      egress = parseFloat(btn.getAttribute('data-eg'));
+      [].forEach.call(egGroup.querySelectorAll('.eg-btn'), function(b){ b.classList.toggle('active', b === btn); });
+      render();
+    });
     render();
   })();
 </script>
