@@ -1,286 +1,909 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Elizabeth Allen | Stock Photography</title>
-    <style>
-        :root {
-            --primary: #222;
-            --bg: #f8f9fa;
-            --accent: #000000;
-        }
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: var(--bg);
-            color: var(--primary);
-        }
-        header {
-            text-align: center;
-            padding: 4rem 1rem;
-            background: white;
-            border-bottom: 1px solid #eaeaea;
-        }
-        header h1 {
-            margin: 0;
-            font-size: 2.5rem;
-            letter-spacing: -0.5px;
-            font-weight: 800;
-        }
-        header p {
-            color: #666;
-            margin-top: 1rem;
-            font-size: 1.1rem;
-        }
-        .gallery-container {
-            max-width: 1200px;
-            margin: 3rem auto;
-            padding: 0 1rem;
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            gap: 2rem;
-        }
-        .photo-card {
-            background: white;
-            border-radius: 6px;
-            overflow: hidden;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.04);
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-            cursor: pointer;
-        }
-        .photo-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 12px 24px rgba(0,0,0,0.08);
-        }
-        .photo-card img {
-            width: 100%;
-            height: 280px;
-            object-fit: cover;
-            display: block;
-        }
-        .photo-info {
-            padding: 1.2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .photo-title {
-            font-weight: 600;
-            margin: 0;
-            font-size: 1.05rem;
-        }
-        .photo-price {
-            background: var(--bg);
-            padding: 0.3rem 0.6rem;
-            border-radius: 4px;
-            font-weight: bold;
-            font-size: 0.9rem;
-        }
-        
-        /* Modal Styles */
-        .modal-overlay {
-            display: none;
-            position: fixed;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: rgba(0,0,0,0.85);
-            z-index: 1000;
-            justify-content: center;
-            align-items: center;
-            padding: 1rem;
-            backdrop-filter: blur(5px);
-        }
-        .modal-content {
-            background: white;
-            border-radius: 8px;
-            max-width: 1000px;
-            width: 100%;
-            display: grid;
-            grid-template-columns: 1.5fr 1fr;
-            overflow: hidden;
-            position: relative;
-        }
-        .close-btn {
-            position: absolute;
-            top: 1rem;
-            right: 1.5rem;
-            background: none;
-            border: none;
-            font-size: 2rem;
-            cursor: pointer;
-            color: #999;
-            transition: color 0.2s;
-        }
-        .close-btn:hover {
-            color: #000;
-        }
-        .modal-image {
-            background: #f0f0f0;
-        }
-        .modal-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-        }
-        .modal-details {
-            padding: 3rem 2rem;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-        .modal-details h2 {
-            margin-top: 0;
-            font-size: 1.8rem;
-            margin-bottom: 0.5rem;
-        }
-        .license-text {
-            color: #666;
-            font-size: 0.9rem;
-            margin-bottom: 1.5rem;
-        }
-        .keywords {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin: 1.5rem 0;
-        }
-        .keyword-tag {
-            background: #f1f3f5;
-            padding: 0.3rem 0.8rem;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            color: #495057;
-            text-transform: lowercase;
-        }
-        .buy-btn {
-            background: var(--accent);
-            color: white;
-            border: none;
-            padding: 1.2rem;
-            border-radius: 6px;
-            font-size: 1.1rem;
-            font-weight: bold;
-            cursor: pointer;
-            margin-top: 1rem;
-            transition: background 0.2s, transform 0.1s;
-        }
-        .buy-btn:hover {
-            background: #333;
-        }
-        .buy-btn:active {
-            transform: scale(0.98);
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stock Photo Storefronts — Storage &amp; Cost Options</title>
+<meta name="description" content="A plain-English research summary of how to store a large photo archive and turn it into a stock storefront: what each path costs, how much it stores, and the extra pieces you'll need.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='13' fill='%23bb4d2c'/%3E%3Ccircle cx='16' cy='16' r='4.5' fill='%23faf7f2'/%3E%3C/svg%3E">
+<style>
+  :root{
+    --paper:#faf7f2;
+    --paper-2:#f1ebe0;
+    --paper-3:#ece4d6;
+    --ink:#221f1c;
+    --ink-soft:#5d564d;
+    --line:#e2dacd;
+    --line-strong:#cabfab;
+    --accent:#bb4d2c;
+    --accent-ink:#983a1a;
+    --accent-tint:#f7e6dc;
+    --teal:#2f6f6a;
+    --teal-ink:#245c57;
+    --teal-tint:#e2efed;
+    --mono:"SFMono-Regular",ui-monospace,"Cascadia Code","Consolas","Liberation Mono",Menlo,monospace;
+    --serif:Georgia,"Iowan Old Style","Palatino Linotype","Times New Roman",serif;
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;background:var(--paper);color:var(--ink);
+    font-family:var(--serif);font-size:18px;line-height:1.62;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:1000px;margin:0 auto;padding:0 22px}
 
-        @media (max-width: 768px) {
-            .modal-content {
-                grid-template-columns: 1fr;
-                max-height: 90vh;
-                overflow-y: auto;
-            }
-            .modal-image img {
-                height: 300px;
-            }
-        }
-    </style>
+  /* ---------- top nav ---------- */
+  .topbar{
+    position:sticky;top:0;z-index:50;
+    background:rgba(250,247,242,.92);backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+  }
+  .topbar .row{display:flex;align-items:center;gap:18px;height:54px}
+  .brand{font-family:var(--mono);font-size:13px;font-weight:600;letter-spacing:.02em;white-space:nowrap;color:var(--ink)}
+  .brand .dot{color:var(--accent)}
+  .navlinks{display:flex;gap:4px;margin-left:auto;overflow-x:auto;scrollbar-width:none}
+  .navlinks::-webkit-scrollbar{display:none}
+  .navlinks a{
+    font-family:var(--mono);font-size:12px;text-transform:uppercase;letter-spacing:.06em;
+    color:var(--ink-soft);text-decoration:none;padding:6px 10px;border-radius:5px;white-space:nowrap;
+  }
+  .navlinks a:hover{color:var(--accent-ink);background:var(--paper-2)}
+
+  /* ---------- hero ---------- */
+  header.hero{padding:58px 0 30px;border-bottom:1px solid var(--line)}
+  .eyebrow{
+    font-family:var(--mono);font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--accent-ink);margin:0 0 14px;font-weight:600;
+  }
+  h1{
+    font-family:var(--sans);font-weight:800;letter-spacing:-.02em;line-height:1.06;
+    font-size:clamp(2.1rem,5.2vw,3.3rem);margin:0 0 18px;
+  }
+  .hero .lede{font-size:1.22rem;max-width:46ch;color:var(--ink);margin:0 0 26px}
+  .meta-chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:6px}
+  .chip{
+    font-family:var(--mono);font-size:11.5px;color:var(--ink-soft);
+    background:var(--paper-2);border:1px solid var(--line);border-radius:999px;padding:5px 11px;
+  }
+  .chip b{color:var(--accent-ink);font-weight:600}
+
+  /* ---------- sections ---------- */
+  section{padding:54px 0;border-bottom:1px solid var(--line);scroll-margin-top:66px}
+  section h2{
+    font-family:var(--sans);font-weight:800;letter-spacing:-.015em;line-height:1.12;
+    font-size:clamp(1.55rem,3.4vw,2.15rem);margin:.1rem 0 .7rem;
+  }
+  section h3{
+    font-family:var(--sans);font-weight:700;font-size:1.25rem;letter-spacing:-.01em;
+    margin:2.2rem 0 .5rem;
+  }
+  section .lede{font-size:1.12rem;color:var(--ink);max-width:64ch;margin:0 0 1.2rem}
+  p{margin:0 0 1.05rem;max-width:68ch}
+  ul,ol{max-width:66ch;padding-left:1.25rem}
+  li{margin:.34rem 0}
+  a{color:var(--accent-ink);text-decoration:underline;text-underline-offset:2px;text-decoration-thickness:1px}
+  a:hover{text-decoration-thickness:2px}
+  strong{font-weight:700}
+  .secnum{font-family:var(--mono);color:var(--accent-ink);font-weight:600}
+
+  /* ---------- callouts ---------- */
+  .callout{
+    border:1px solid var(--line-strong);border-left:4px solid var(--accent);
+    background:var(--paper-2);border-radius:8px;padding:16px 18px;margin:1.4rem 0;max-width:72ch;
+  }
+  .callout.teal{border-left-color:var(--teal)}
+  .callout .tag{
+    font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.1em;
+    color:var(--accent-ink);font-weight:600;display:block;margin-bottom:5px;
+  }
+  .callout.teal .tag{color:var(--teal-ink)}
+  .callout p{margin:.2rem 0;font-size:1rem}
+  .callout p:last-child{margin-bottom:0}
+
+  /* ---------- tables ---------- */
+  .table-scroll{overflow-x:auto;margin:1.3rem 0;border:1px solid var(--line);border-radius:10px}
+  table{border-collapse:collapse;width:100%;font-family:var(--sans);font-size:14.5px;background:var(--paper)}
+  caption{caption-side:bottom;font-family:var(--mono);font-size:11.5px;color:var(--ink-soft);padding:8px 4px;text-align:left}
+  th,td{text-align:left;padding:11px 14px;border-bottom:1px solid var(--line);vertical-align:top}
+  thead th{
+    background:var(--paper-3);font-weight:700;font-size:12.5px;text-transform:uppercase;
+    letter-spacing:.04em;color:var(--ink);white-space:nowrap;border-bottom:1.5px solid var(--line-strong);
+  }
+  tbody tr:last-child td{border-bottom:none}
+  tbody tr:hover{background:var(--paper-2)}
+  td .mono,.mono{font-family:var(--mono)}
+  .nowrap{white-space:nowrap}
+  .price{font-family:var(--mono);font-weight:600;color:var(--accent-ink);white-space:nowrap}
+  .free{font-family:var(--mono);font-weight:600;color:var(--teal-ink)}
+
+  /* ---------- pills ---------- */
+  .pill{
+    display:inline-block;font-family:var(--mono);font-size:11px;font-weight:600;
+    padding:2px 8px;border-radius:999px;letter-spacing:.02em;white-space:nowrap;
+  }
+  .pill.yes{background:var(--teal-tint);color:var(--teal-ink);border:1px solid #bcd9d4}
+  .pill.no{background:#f0e7e7;color:#8a4b3f;border:1px solid #e0cdc7}
+  .pill.ext{background:var(--accent-tint);color:var(--accent-ink);border:1px solid #ecccba}
+  .pill.neutral{background:var(--paper-3);color:var(--ink-soft);border:1px solid var(--line)}
+
+  /* ---------- figures / diagrams ---------- */
+  figure{margin:1.6rem 0;background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:20px 18px}
+  figure svg{display:block;width:100%;height:auto}
+  figcaption{font-family:var(--sans);font-size:13.5px;color:var(--ink-soft);margin-top:12px;line-height:1.5}
+  figcaption b{color:var(--ink)}
+  .legend{display:flex;flex-wrap:wrap;gap:14px 20px;margin:.4rem 0 0;padding:0;list-style:none;font-family:var(--mono);font-size:12px;color:var(--ink-soft)}
+  .legend li{display:flex;align-items:center;gap:7px;margin:0}
+  .sw{width:15px;height:15px;border-radius:4px;flex:0 0 auto;border:1.5px solid}
+  .sw.tool{background:var(--paper-2);border-color:var(--line-strong)}
+  .sw.store{background:var(--teal-tint);border-color:var(--teal)}
+  .sw.shop{background:var(--accent-tint);border-color:var(--accent)}
+  .sw.ext{background:transparent;border-style:dashed;border-color:var(--ink-soft)}
+
+  /* diagram svg classes */
+  .d-box{fill:var(--paper-2);stroke:var(--line-strong);stroke-width:1.5}
+  .d-box-teal{fill:var(--teal-tint);stroke:var(--teal);stroke-width:1.5}
+  .d-box-shop{fill:var(--accent-tint);stroke:var(--accent);stroke-width:1.5}
+  .d-ext{stroke-dasharray:6 4}
+  .d-lbl{font-family:var(--mono);font-size:13px;fill:var(--ink);font-weight:600}
+  .d-lbl-sm{font-family:var(--mono);font-size:11px;fill:var(--ink-soft)}
+  .d-head{font-family:var(--mono);font-size:11px;fill:var(--accent-ink);font-weight:700;letter-spacing:.06em}
+  .d-head-teal{font-family:var(--mono);font-size:11px;fill:var(--teal-ink);font-weight:700;letter-spacing:.06em}
+  .d-row{font-family:var(--mono);font-size:11.5px;fill:var(--ink-soft)}
+  .d-arrow{stroke:var(--ink-soft);stroke-width:1.6;fill:none}
+  .d-arrowlbl{font-family:var(--mono);font-size:10.5px;fill:var(--ink-soft)}
+  .bar{fill:var(--teal)}
+  .bar.hot{fill:var(--accent)}
+  .bar-val{font-family:var(--mono);font-size:12px;font-weight:600;fill:var(--ink)}
+  .bar-lbl{font-family:var(--mono);font-size:12px;fill:var(--ink)}
+
+  /* ---------- option cards ---------- */
+  .option{border:1px solid var(--line-strong);border-radius:14px;background:var(--paper);margin:1.6rem 0;overflow:hidden}
+  .option > .head{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;padding:18px 22px;background:var(--paper-2);border-bottom:1px solid var(--line)}
+  .option .optkey{font-family:var(--mono);font-weight:700;color:var(--accent-ink);font-size:13px;letter-spacing:.05em}
+  .option .head h3{margin:0;font-family:var(--sans);font-size:1.4rem}
+  .option .head .tagline{font-family:var(--mono);font-size:12px;color:var(--ink-soft);width:100%}
+  .option .body{display:grid;grid-template-columns:minmax(240px,1fr) minmax(280px,1.15fr);gap:8px 30px;padding:8px 22px 22px}
+  .option .body figure{margin:18px 0 0;background:var(--paper);border:none;padding:0}
+  .specs{margin:18px 0 0}
+  .specs dl{display:grid;grid-template-columns:auto 1fr;gap:0;margin:0;border-top:1px solid var(--line)}
+  .specs dt{font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.05em;color:var(--ink-soft);padding:9px 12px 9px 0;border-bottom:1px solid var(--line);white-space:nowrap}
+  .specs dd{margin:0;padding:9px 0;border-bottom:1px solid var(--line);font-size:14.5px;font-family:var(--sans)}
+  .specs dd .price,.specs dd .free{font-size:13.5px}
+
+  /* ---------- estimator ---------- */
+  .estimator{border:1px solid var(--line-strong);border-radius:12px;background:var(--paper-2);padding:20px 22px;margin:1.5rem 0}
+  .estimator .ehead{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:8px}
+  .estimator h3{margin:0;font-size:1.15rem}
+  .estimator .reads{font-family:var(--mono);font-size:13px;color:var(--ink-soft)}
+  .estimator .reads b{color:var(--accent-ink);font-size:1.15rem}
+  .estimator input[type=range]{width:100%;margin:18px 0 6px;accent-color:var(--accent)}
+  .ticks{display:flex;justify-content:space-between;font-family:var(--mono);font-size:10.5px;color:var(--ink-soft);margin-bottom:18px}
+  .est-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}
+  .est-card{background:var(--paper);border:1px solid var(--line);border-radius:9px;padding:12px 14px}
+  .est-card .name{font-family:var(--sans);font-size:13px;font-weight:700}
+  .est-card .rate{font-family:var(--mono);font-size:11px;color:var(--ink-soft);margin:2px 0 8px}
+  .est-card .mo{font-family:var(--mono);font-size:1.45rem;font-weight:700;color:var(--accent-ink);line-height:1}
+  .est-card .yr{font-family:var(--mono);font-size:11.5px;color:var(--ink-soft);margin-top:4px}
+  .est-card.cheap{border-color:var(--teal);background:var(--teal-tint)}
+  .est-card.cheap .mo{color:var(--teal-ink)}
+  .est-note{font-family:var(--mono);font-size:11.5px;color:var(--ink-soft);margin-top:14px}
+
+  /* ---------- decision ---------- */
+  .decide-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px;margin:1.4rem 0}
+  .decide-card{border:1px solid var(--line);border-radius:12px;padding:18px 20px;background:var(--paper)}
+  .decide-card .if{font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--ink-soft)}
+  .decide-card .then{font-family:var(--sans);font-weight:800;font-size:1.18rem;color:var(--accent-ink);margin:4px 0 8px}
+  .decide-card p{font-size:14.5px;font-family:var(--sans);margin:0}
+  .decide-card .cost{font-family:var(--mono);font-size:12px;color:var(--teal-ink);margin-top:10px;display:block}
+
+  /* ---------- glossary ---------- */
+  .gloss{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:4px 28px}
+  .gloss dt{font-family:var(--mono);font-weight:700;color:var(--ink);margin-top:14px;font-size:14px}
+  .gloss dd{margin:2px 0 0;font-size:15px;color:var(--ink-soft)}
+
+  /* ---------- sources / footer ---------- */
+  .src-cols{columns:2;column-gap:34px}
+  .src-cols h3{margin-top:0;break-after:avoid}
+  .src-cols ul{list-style:none;padding:0;break-inside:avoid;margin:0 0 1.3rem}
+  .src-cols li{font-size:14px;margin:.3rem 0;font-family:var(--sans)}
+  footer{padding:40px 0 70px;color:var(--ink-soft)}
+  footer .fineprint{font-family:var(--mono);font-size:12px;max-width:70ch}
+  .totop{font-family:var(--mono);font-size:12px}
+
+  @media (max-width:720px){
+    body{font-size:17px}
+    .option .body{grid-template-columns:1fr}
+    .src-cols{columns:1}
+    .hero .lede{font-size:1.1rem}
+  }
+</style>
 </head>
 <body>
 
-    <header>
-        <h1>Elizabeth Allen Stock Photography</h1>
-        <p>High-resolution digital downloads for commercial and personal use.</p>
-    </header>
+<!-- ===================== NAV ===================== -->
+<nav class="topbar">
+  <div class="wrap row">
+    <span class="brand">stock<span class="dot">.</span>storefront / research</span>
+    <div class="navlinks">
+      <a href="#concept">Concept</a>
+      <a href="#storage">Storage</a>
+      <a href="#backup">3-2-1</a>
+      <a href="#storefront">Storefront</a>
+      <a href="#compare">Compare</a>
+      <a href="#decide">Decide</a>
+      <a href="#glossary">Glossary</a>
+      <a href="#sources">Sources</a>
+    </div>
+  </div>
+</nav>
 
-    <div class="gallery-container">
-        <!-- Photo 1 -->
-        <div class="photo-card" onclick="openModal('https://images.unsplash.com/photo-1472396961693-142e6e26ce82?auto=format&fit=crop&w=1200&q=80', 'Mountain Lake Peak', '$25.00', ['nature', 'landscape', 'mountains', 'water'])">
-            <img src="https://images.unsplash.com/photo-1472396961693-142e6e26ce82?auto=format&fit=crop&w=600&q=80" alt="Mountain Lake">
-            <div class="photo-info">
-                <p class="photo-title">Mountain Lake Peak</p>
-                <span class="photo-price">$25</span>
-            </div>
-        </div>
+<!-- ===================== HERO ===================== -->
+<header class="hero">
+  <div class="wrap">
+    <p class="eyebrow">Research summary · self-guided</p>
+    <h1>Storing your photos &amp; selling them online</h1>
+    <p class="lede">Three honest ways to turn a large photo archive into a stock storefront — and what each one really costs, stores, and asks of you.</p>
+    <div class="meta-chips">
+      <span class="chip">Compiled <b>June 2026</b></span>
+      <span class="chip">One self-contained <b>HTML file</b></span>
+      <span class="chip">No jargon left undefined</span>
+      <span class="chip">Every claim has a <b>source link</b></span>
+    </div>
+  </div>
+</header>
 
-        <!-- Photo 2 -->
-        <div class="photo-card" onclick="openModal('https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=1200&q=80', 'Morning Forest Path', '$15.00', ['forest', 'trees', 'morning', 'hiking'])">
-            <img src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=600&q=80" alt="Forest Path">
-            <div class="photo-info">
-                <p class="photo-title">Morning Forest Path</p>
-                <span class="photo-price">$15</span>
-            </div>
-        </div>
+<main>
 
-        <!-- Photo 3 -->
-        <div class="photo-card" onclick="openModal('https://images.unsplash.com/photo-1506744626753-eda81829cd13?auto=format&fit=crop&w=1200&q=80', 'Ocean Sunset Aerial', '$30.00', ['ocean', 'sunset', 'aerial', 'waves'])">
-            <img src="https://images.unsplash.com/photo-1506744626753-eda81829cd13?auto=format&fit=crop&w=600&q=80" alt="Ocean Sunset">
-            <div class="photo-info">
-                <p class="photo-title">Ocean Sunset Aerial</p>
-                <span class="photo-price">$30</span>
-            </div>
-        </div>
+<!-- ===================== CONCEPT ===================== -->
+<section id="concept">
+  <div class="wrap">
+    <p class="eyebrow"><span class="secnum">01</span> · Start here</p>
+    <h2>The one idea that makes everything else simple</h2>
+    <p class="lede">Your photos live two separate lives. Keeping them separate is what keeps storage cheap and the website fast.</p>
+
+    <p>The most common point of confusion is thinking the website and the archive are the same pile of files. They are not, and they should never be:</p>
+    <ul>
+      <li><strong>The archive</strong> is your private master collection — the big RAW files straight off the camera (roughly <strong>25–60&nbsp;MB each</strong>). Nobody buys these. They just need to exist forever, safely, and cheaply.</li>
+      <li><strong>The storefront</strong> is the public website. It only ever shows <strong>high-resolution JPEGs</strong> (roughly <strong>2–15&nbsp;MB each</strong>) exported from Lightroom. That is the industry norm — stock buyers receive JPEGs, never RAW.</li>
+    </ul>
+    <p>Because the two are decoupled, you can clear the heavy RAW files off your laptop without ever breaking the live site. The website never needed them.</p>
+
+    <figure>
+      <svg viewBox="0 0 840 330" role="img" aria-labelledby="t-split d-split">
+        <title id="t-split">How files flow from camera to archive and storefront</title>
+        <desc id="d-split">RAW files go from the camera into Lightroom, which sends the RAW masters to a private archive and exports JPEGs to the public storefront.</desc>
+        <!-- source -->
+        <rect class="d-box" x="14" y="132" width="120" height="66" rx="9"/>
+        <text class="d-lbl" x="74" y="160" text-anchor="middle">Camera</text>
+        <text class="d-lbl-sm" x="74" y="178" text-anchor="middle">RAW file</text>
+        <!-- arrow to lightroom -->
+        <line class="d-arrow" x1="134" y1="165" x2="196" y2="165" marker-end="url(#ah-split)"/>
+        <!-- lightroom -->
+        <rect class="d-box" x="198" y="118" width="186" height="94" rx="11"/>
+        <text class="d-lbl" x="291" y="150" text-anchor="middle">Lightroom Classic</text>
+        <text class="d-lbl-sm" x="291" y="170" text-anchor="middle">edit · keyword · tag</text>
+        <text class="d-lbl-sm" x="291" y="187" text-anchor="middle">then export</text>
+        <!-- arrows split -->
+        <path class="d-arrow" d="M384 145 C 460 120, 500 96, 556 88" marker-end="url(#ah-split)"/>
+        <text class="d-arrowlbl" x="455" y="100" text-anchor="middle">keep the RAW</text>
+        <path class="d-arrow" d="M384 188 C 460 214, 500 238, 556 246" marker-end="url(#ah-split)"/>
+        <text class="d-arrowlbl" x="452" y="246" text-anchor="middle">export JPEG</text>
+        <!-- archive -->
+        <rect class="d-box-teal" x="558" y="26" width="268" height="106" rx="11"/>
+        <text class="d-head-teal" x="576" y="50">PRIVATE ARCHIVE</text>
+        <text class="d-lbl" x="576" y="74">RAW masters · 25–60 MB</text>
+        <text class="d-row" x="576" y="93">Object storage + 3-2-1 backup</text>
+        <text class="d-row" x="576" y="111">Never published</text>
+        <!-- storefront -->
+        <rect class="d-box-shop" x="558" y="200" width="268" height="106" rx="11"/>
+        <text class="d-head" x="576" y="224">PUBLIC STOREFRONT</text>
+        <text class="d-lbl" x="576" y="248">High-res JPEG · 2–15 MB</text>
+        <text class="d-row" x="576" y="267">Hosted on the web</text>
+        <text class="d-row" x="576" y="285">What buyers license &amp; download</text>
+        <defs>
+          <marker id="ah-split" markerWidth="9" markerHeight="9" refX="7" refY="3.2" orient="auto">
+            <path d="M0,0 L7,3.2 L0,6.4 Z" fill="var(--ink-soft)"/>
+          </marker>
+        </defs>
+      </svg>
+      <figcaption><b>The split.</b> Lightroom is the hub: it keeps the heavy RAW masters headed for cheap long-term storage, and exports lightweight JPEGs for the shop. Everything below builds on this one separation.</figcaption>
+    </figure>
+
+    <ul class="legend" aria-label="Diagram colour key">
+      <li><span class="sw tool"></span> Tool / step you run</li>
+      <li><span class="sw store"></span> Storage — where files live</li>
+      <li><span class="sw shop"></span> Storefront / checkout / payments</li>
+      <li><span class="sw ext"></span> External service (its own signup &amp; bill)</li>
+    </ul>
+    <p class="mono" style="font-size:12.5px;color:var(--ink-soft)">This colour key is used in every diagram on the page.</p>
+  </div>
+</section>
+
+<!-- ===================== STORAGE ===================== -->
+<section id="storage">
+  <div class="wrap">
+    <p class="eyebrow"><span class="secnum">02</span> · Where the files live</p>
+    <h2>Three storage jobs, three different tools</h2>
+    <p class="lede">“Cloud storage” is not one thing. The mistake that gets expensive is using a sync app (built for documents) to hold terabytes of photos. Each job below wants a different kind of service.</p>
+
+    <div class="table-scroll">
+      <table>
+        <caption>The three jobs storage has to do for a photo archive. Prices are list rates as of June 2026.</caption>
+        <thead>
+          <tr><th>The job</th><th>Right tool</th><th>Typical cost</th><th>Why it fits — and the catch</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Active sync</strong><br><span class="mono" style="font-size:12px;color:var(--ink-soft)">this week's working files</span></td>
+            <td>Google Drive, Dropbox</td>
+            <td><span class="price">~$10–12/mo</span><br><span class="mono" style="font-size:11.5px">(2&nbsp;TB tier)</span></td>
+            <td>Instant access on every device. <strong>Catch:</strong> syncing tens of thousands of large photos is slow and bloats your local disk — it is not built to be the archive.</td>
+          </tr>
+          <tr>
+            <td><strong>Object storage</strong><br><span class="mono" style="font-size:12px;color:var(--ink-soft)">the permanent RAW archive</span></td>
+            <td>Backblaze B2, Cloudflare R2, AWS S3</td>
+            <td><span class="price">~$1–23 / TB / mo</span><br><span class="mono" style="font-size:11.5px">(see table below)</span></td>
+            <td>Effectively unlimited, priced by the terabyte, keeps your laptop empty. <strong>Catch:</strong> no “drag-and-drop folder” — you push/pull files with a sync tool or app.</td>
+          </tr>
+          <tr>
+            <td><strong>True backup</strong><br><span class="mono" style="font-size:12px;color:var(--ink-soft)">disaster recovery</span></td>
+            <td>Backblaze Personal, iDrive</td>
+            <td><span class="price">~$99/yr</span></td>
+            <td>Set-and-forget mirror of your whole computer. <strong>Catch:</strong> it mirrors deletions too, so it is a safety net — not a place you organise files.</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
 
-    <!-- The Modal (Lightbox / Checkout Simulation) -->
-    <div class="modal-overlay" id="photoModal" onclick="closeModal(event)">
-        <div class="modal-content" onclick="event.stopPropagation()">
-            <button class="close-btn" onclick="closeModal(event)">&times;</button>
-            <div class="modal-image">
-                <img id="modalImg" src="" alt="Full size image">
-            </div>
-            <div class="modal-details">
-                <h2 id="modalTitle">Photo Title</h2>
-                <div class="license-text">✓ Standard Commercial License<br>✓ High Resolution JPEG Download</div>
-                <div class="keywords" id="modalKeywords">
-                    <!-- Keywords injected via JavaScript -->
-                </div>
-                <button class="buy-btn" id="modalBuyBtn" onclick="alert('This is where the secure Snipcart checkout drawer would slide out!')">Buy License - $0</button>
-            </div>
-        </div>
+    <h3>Object storage — the part to understand for cost</h3>
+    <p>This is where the master archive should live, and where the real money decisions are. The headline price is per terabyte, but the hidden cost is <strong>egress</strong> — the fee to <em>download</em> your own files back out. It is the single biggest trap in cloud storage.</p>
+
+    <div class="table-scroll">
+      <table>
+        <caption>Object-storage list prices, June 2026. “Egress” = the cost to download files back out. ⚠️ verify on the provider's page before committing.</caption>
+        <thead>
+          <tr><th>Service</th><th>Storage / TB / mo</th><th>Download (egress)</th><th>Best for</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>S3 Glacier Deep Archive</strong><br><span class="mono" style="font-size:11.5px;color:var(--ink-soft)">AWS — cold vault</span></td>
+            <td><span class="price">~$1.01</span></td>
+            <td>Retrieval fee + slow restore (hours); 180-day minimum</td>
+            <td>“Break glass in emergency” copies you’ll almost never touch</td>
+          </tr>
+          <tr>
+            <td><strong>Backblaze B2</strong></td>
+            <td><span class="price">~$6.95</span></td>
+            <td><span class="free">Free</span> up to 3× what you store, then ~$10/TB</td>
+            <td><strong>The default pick</strong> — cheap, simple, photographer-friendly</td>
+          </tr>
+          <tr>
+            <td><strong>Wasabi</strong></td>
+            <td><span class="price">~$7.99</span><br><span class="mono" style="font-size:11px">(rose Jul 2026)</span></td>
+            <td><span class="free">Free</span> but capped to your stored volume</td>
+            <td>Flat-rate fans; watch the egress cap &amp; minimums</td>
+          </tr>
+          <tr>
+            <td><strong>Cloudflare R2</strong></td>
+            <td><span class="price">~$15.36</span></td>
+            <td><span class="free">$0 — zero, uncapped</span></td>
+            <td>An archive you’ll download from a lot (no egress ever)</td>
+          </tr>
+          <tr>
+            <td><strong>AWS S3 Standard</strong></td>
+            <td><span class="price">~$23.55</span></td>
+            <td><span class="pill no">~$90 / TB</span> after 100 GB free</td>
+            <td>Big infrastructure; the egress bill surprises people</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
 
-    <script>
-        const modal = document.getElementById('photoModal');
-        const modalImg = document.getElementById('modalImg');
-        const modalTitle = document.getElementById('modalTitle');
-        const modalKeywords = document.getElementById('modalKeywords');
-        const modalBuyBtn = document.getElementById('modalBuyBtn');
+    <div class="callout teal">
+      <span class="tag">Plain-English takeaway</span>
+      <p>For most photographers the answer is <strong>Backblaze B2</strong> (cheap, generous free downloads) or <strong>Cloudflare R2</strong> if you’ll pull files often (downloads are always free). Reach for <strong>Glacier Deep Archive</strong> only for a deep-freeze copy you hope to never open. Avoid parking a big archive on <strong>S3 Standard</strong> unless you’ve done the egress math.</p>
+    </div>
 
-        function openModal(imgSrc, title, price, keywords) {
-            modalImg.src = imgSrc;
-            modalTitle.textContent = title;
-            modalBuyBtn.textContent = `Buy License - ${price}`;
-            
-            // Generate the keyword tags dynamically
-            modalKeywords.innerHTML = '';
-            keywords.forEach(keyword => {
-                const span = document.createElement('span');
-                span.className = 'keyword-tag';
-                span.textContent = `#${keyword}`;
-                modalKeywords.appendChild(span);
-            });
+    <!-- cost bar chart -->
+    <figure>
+      <svg viewBox="0 0 820 300" role="img" aria-labelledby="t-bars d-bars">
+        <title id="t-bars">Storage cost per terabyte per month</title>
+        <desc id="d-bars">Bar chart: Glacier Deep Archive about one dollar, Backblaze B2 about seven, Wasabi about eight, Cloudflare R2 about fifteen, AWS S3 Standard about twenty-four dollars per terabyte per month.</desc>
+        <text class="d-head-teal" x="14" y="22">COST TO STORE — $ / TB / MONTH</text>
+        <!-- rows -->
+        <!-- scale: x0=210, 23.33px per $ -->
+        <g>
+          <text class="bar-lbl" x="196" y="63" text-anchor="end">Glacier Deep</text>
+          <rect class="bar" x="210" y="50" width="24" height="22" rx="3"/>
+          <text class="bar-val" x="242" y="66">$1.01</text>
+        </g>
+        <g>
+          <text class="bar-lbl" x="196" y="105" text-anchor="end">Backblaze B2</text>
+          <rect class="bar" x="210" y="92" width="162" height="22" rx="3"/>
+          <text class="bar-val" x="380" y="108">$6.95</text>
+        </g>
+        <g>
+          <text class="bar-lbl" x="196" y="147" text-anchor="end">Wasabi</text>
+          <rect class="bar" x="210" y="134" width="186" height="22" rx="3"/>
+          <text class="bar-val" x="404" y="150">$7.99</text>
+        </g>
+        <g>
+          <text class="bar-lbl" x="196" y="189" text-anchor="end">Cloudflare R2</text>
+          <rect class="bar" x="210" y="176" width="358" height="22" rx="3"/>
+          <text class="bar-val" x="576" y="192">$15.36</text>
+        </g>
+        <g>
+          <text class="bar-lbl" x="196" y="231" text-anchor="end">AWS S3 Standard</text>
+          <rect class="bar hot" x="210" y="218" width="549" height="22" rx="3"/>
+          <text class="bar-val" x="767" y="234" text-anchor="end" style="fill:#fff">$23.55</text>
+        </g>
+        <!-- egress note -->
+        <line x1="210" y1="258" x2="210" y2="270" stroke="var(--line-strong)"/>
+        <text class="d-row" x="210" y="288">Bars show storage only. R2 adds <tspan style="fill:var(--teal-ink);font-weight:700">$0 to download</tspan>; S3 adds <tspan style="fill:var(--accent-ink);font-weight:700">~$90/TB to download</tspan>.</text>
+      </svg>
+      <figcaption><b>Storage is cheap; downloading can be the real bill.</b> The bar is only half the story — always read the egress column too.</figcaption>
+    </figure>
 
-            // Show the modal
-            modal.style.display = 'flex';
-        }
+    <!-- interactive estimator -->
+    <div class="estimator" id="est">
+      <div class="ehead">
+        <h3>Quick cost estimator</h3>
+        <div class="reads">Archive size: <b id="est-tb">5</b> TB</div>
+      </div>
+      <input type="range" id="est-range" min="0.5" max="50" step="0.5" value="5" aria-label="Archive size in terabytes">
+      <div class="ticks"><span>0.5 TB</span><span>10</span><span>20</span><span>30</span><span>40</span><span>50 TB</span></div>
+      <div class="est-grid" id="est-grid">
+        <!-- filled by JS; static fallback below for no-JS -->
+        <noscript><p class="mono" style="font-size:12px">Enable JavaScript for the live estimate, or use the per-TB rates in the table above (e.g. 5&nbsp;TB on Backblaze B2 ≈ $34.75/mo).</p></noscript>
+      </div>
+      <p class="est-note">Storage only, at list rates — excludes any download/egress fees. For planning, not a quote.</p>
+    </div>
+  </div>
+</section>
 
-        function closeModal(event) {
-            if(event) event.stopPropagation();
-            modal.style.display = 'none';
-        }
+<!-- ===================== BACKUP ===================== -->
+<section id="backup">
+  <div class="wrap">
+    <p class="eyebrow"><span class="secnum">03</span> · Don't lose the originals</p>
+    <h2>The 3-2-1 rule</h2>
+    <p class="lede">A storefront is replaceable. The original photographs are not. The 3-2-1 rule — coined by photographer Peter Krogh in <em>The DAM Book</em> — is the standard insurance policy.</p>
 
-        // Close modal if the user hits the Escape key
-        document.addEventListener('keydown', function(event) {
-            if (event.key === "Escape") {
-                closeModal();
-            }
-        });
-    </script>
+    <figure>
+      <svg viewBox="0 0 820 280" role="img" aria-labelledby="t-321 d-321">
+        <title id="t-321">The 3-2-1 backup rule</title>
+        <desc id="d-321">Three copies of your files, on two different kinds of media, with one copy stored off-site.</desc>
+        <!-- copy 1 -->
+        <rect class="d-box" x="24" y="40" width="210" height="120" rx="11"/>
+        <rect x="58" y="66" width="60" height="44" rx="4" fill="none" stroke="var(--ink-soft)" stroke-width="1.5"/>
+        <rect x="70" y="112" width="36" height="8" rx="2" fill="var(--ink-soft)"/>
+        <text class="d-lbl" x="129" y="86">Working copy</text>
+        <text class="d-row" x="129" y="106">Internal SSD / NAS</text>
+        <text class="d-head-teal" x="129" y="142">MEDIA TYPE A</text>
+        <!-- copy 2 -->
+        <rect class="d-box" x="294" y="40" width="210" height="120" rx="11"/>
+        <rect x="328" y="70" width="52" height="38" rx="4" fill="none" stroke="var(--ink-soft)" stroke-width="1.5"/>
+        <circle cx="354" cy="89" r="5" fill="none" stroke="var(--ink-soft)" stroke-width="1.5"/>
+        <text class="d-lbl" x="399" y="86">Local backup</text>
+        <text class="d-row" x="399" y="106">External HDD, auto-clone</text>
+        <text class="d-head-teal" x="399" y="142">MEDIA TYPE B</text>
+        <!-- copy 3 -->
+        <rect class="d-box-teal" x="564" y="40" width="232" height="120" rx="11"/>
+        <path d="M598 96 a16 16 0 0 1 30 -6 a13 13 0 0 1 6 25 h-34 a13 13 0 0 1 -2 -19 z" fill="none" stroke="var(--teal)" stroke-width="1.6"/>
+        <text class="d-lbl" x="648" y="86">Off-site copy</text>
+        <text class="d-row" x="648" y="106">Object storage / online backup</text>
+        <text class="d-head" x="648" y="142">1 COPY OFF-SITE</text>
+        <!-- bracket -->
+        <path class="d-arrow" d="M24 196 L24 210 L796 210 L796 196" marker-end="" style="stroke:var(--line-strong)"/>
+        <text class="d-lbl" x="410" y="236" text-anchor="middle">3 copies total &nbsp;·&nbsp; 2 different kinds of media &nbsp;·&nbsp; 1 of them off-site</text>
+      </svg>
+      <figcaption><b>3 — 2 — 1.</b> Three copies means one working file plus two backups. Two media types means a drive failure can’t take them all. One off-site copy survives a fire, theft, or ransomware at home. The cloud archive from the last section <em>is</em> your off-site copy.</figcaption>
+    </figure>
 
-    <!-- 
-      Technical Note: 
-      To make the buy button actually process credit cards and deliver the files on GitHub Pages, 
-      you would paste the Snipcart HTML snippet right here before the closing body tag. 
-    -->
+    <div class="callout">
+      <span class="tag">Watch out</span>
+      <p>A “backup” service like <strong>Backblaze Personal</strong> ($99/yr, unlimited) mirrors your computer — but it <strong>purges files from external drives you don’t reconnect within ~30 days</strong>. For a true permanent archive, pair it with object storage (Section 02), which never forgets.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== STOREFRONT ===================== -->
+<section id="storefront">
+  <div class="wrap">
+    <p class="eyebrow"><span class="secnum">04</span> · The storefront</p>
+    <h2>Three ways to actually sell the photos</h2>
+    <p class="lede">Every storefront has to do the same three things: <strong>show the gallery</strong>, <strong>let people search</strong>, and <strong>take payment then deliver the file</strong>. The options differ in how much is bundled for you versus assembled by you — which is the trade between cost, control, and effort.</p>
+
+    <p>Each diagram below is a <strong>stack</strong>: the same rows every time, so you can see at a glance which pieces come bundled and which are <em>external</em> (a separate service with its own bill). Reminder of the colours: <span class="pill neutral">tool you run</span> <span class="pill yes">storage</span> <span class="pill ext">storefront / checkout</span>.</p>
+
+    <!-- OPTION A -->
+    <article class="option" id="opt-managed">
+      <div class="head">
+        <span class="optkey">OPTION A</span>
+        <h3>Turnkey managed platform</h3>
+        <span class="tagline">SmugMug · PhotoShelter · Pixieset · Zenfolio — one subscription does everything</span>
+      </div>
+      <div class="body">
+        <figure>
+          <svg viewBox="0 0 580 360" role="img" aria-labelledby="t-a d-a">
+            <title id="t-a">Managed platform stack</title>
+            <desc id="d-a">Lightroom publishes to a single managed platform that bundles website, search, checkout and unlimited JPEG storage. No external pieces.</desc>
+            <!-- row labels -->
+            <text class="d-row" x="150" y="43" text-anchor="end">Capture</text>
+            <text class="d-row" x="150" y="97" text-anchor="end">Website</text>
+            <text class="d-row" x="150" y="151" text-anchor="end">Search</text>
+            <text class="d-row" x="150" y="205" text-anchor="end">Checkout</text>
+            <text class="d-row" x="150" y="259" text-anchor="end">File storage</text>
+            <text class="d-row" x="150" y="313" text-anchor="end">Payments</text>
+            <!-- capture -->
+            <rect class="d-box" x="160" y="16" width="400" height="46" rx="8"/>
+            <text class="d-lbl" x="360" y="44" text-anchor="middle">Lightroom Classic → official publish plugin</text>
+            <!-- big managed block rows 2-5 -->
+            <rect class="d-box-shop" x="160" y="70" width="400" height="208" rx="10"/>
+            <text class="d-head" x="360" y="150" text-anchor="middle">ONE MANAGED PLATFORM</text>
+            <text class="d-lbl" x="360" y="175" text-anchor="middle">website · search (reads your keywords)</text>
+            <text class="d-lbl" x="360" y="197" text-anchor="middle">checkout · watermarking</text>
+            <text class="d-lbl-sm" x="360" y="240" text-anchor="middle" style="fill:var(--teal-ink);font-weight:700">unlimited JPEG storage INCLUDED</text>
+            <!-- payments -->
+            <rect class="d-box-shop" x="160" y="286" width="400" height="46" rx="8"/>
+            <text class="d-lbl" x="360" y="314" text-anchor="middle">Card processing built in</text>
+          </svg>
+          <figcaption><b>Nothing external.</b> One login, one bill. The platform stores the JPEGs, runs the shop, and takes the card.</figcaption>
+        </figure>
+        <div class="specs">
+          <dl>
+            <dt>Cost</dt><dd><span class="price">~$10–45 / mo</span> depending on plan &amp; vendor</dd>
+            <dt>Storage</dt><dd><strong>Unlimited JPEG</strong> on SmugMug &amp; PhotoShelter Pro; Pixieset/Zenfolio tier up to 1&nbsp;TB+</dd>
+            <dt>External storage?</dt><dd><span class="pill yes">No — included</span></dd>
+            <dt>Sells / e-commerce</dt><dd><span class="pill yes">Yes, built in</span> — prints &amp; digital downloads</dd>
+            <dt>Commission</dt><dd>SmugMug &amp; Pixieset (paid): <strong>0%</strong>. PhotoShelter ~8–10%, Zenfolio ~7% <span class="mono" style="font-size:11px">⚠️ verify</span></dd>
+            <dt>Lightroom</dt><dd>Native “Publish” plugin — drag, click, done</dd>
+            <dt>Effort</dt><dd><span class="pill neutral">Lowest</span> — no setup or maintenance</dd>
+            <dt>Best for</dt><dd>Getting selling <em>this week</em> with zero technical overhead</dd>
+          </dl>
+        </div>
+      </div>
+    </article>
+
+    <!-- OPTION B -->
+    <article class="option" id="opt-wordpress">
+      <div class="head">
+        <span class="optkey">OPTION B</span>
+        <h3>Self-hosted WordPress</h3>
+        <span class="tagline">WordPress + Easy Digital Downloads / WooCommerce — you own &amp; assemble it</span>
+      </div>
+      <div class="body">
+        <figure>
+          <svg viewBox="0 0 580 360" role="img" aria-labelledby="t-b d-b">
+            <title id="t-b">WordPress stack</title>
+            <desc id="d-b">Lightroom syncs to WordPress on a web host, which handles the site, search and checkout, with big JPEGs offloaded to external object storage and payments via an external processor.</desc>
+            <text class="d-row" x="150" y="43" text-anchor="end">Capture</text>
+            <text class="d-row" x="150" y="97" text-anchor="end">Website</text>
+            <text class="d-row" x="150" y="151" text-anchor="end">Search</text>
+            <text class="d-row" x="150" y="205" text-anchor="end">Checkout</text>
+            <text class="d-row" x="150" y="259" text-anchor="end">File storage</text>
+            <text class="d-row" x="150" y="313" text-anchor="end">Payments</text>
+            <rect class="d-box" x="160" y="16" width="400" height="46" rx="8"/>
+            <text class="d-lbl" x="360" y="44" text-anchor="middle">Lightroom → WP/LR Sync plugin</text>
+            <rect class="d-box" x="160" y="70" width="400" height="46" rx="8"/>
+            <text class="d-lbl" x="360" y="91" text-anchor="middle">WordPress on a web host</text>
+            <text class="d-lbl-sm" x="360" y="108" text-anchor="middle">SiteGround / Bluehost · 10–50 GB site space</text>
+            <rect class="d-box" x="160" y="124" width="400" height="46" rx="8"/>
+            <text class="d-lbl" x="360" y="152" text-anchor="middle">Search → MySQL keyword tags</text>
+            <rect class="d-box" x="160" y="178" width="400" height="46" rx="8"/>
+            <text class="d-lbl" x="360" y="206" text-anchor="middle">Easy Digital Downloads / WooCommerce</text>
+            <!-- file storage: external object storage -->
+            <rect class="d-box-teal d-ext" x="160" y="232" width="400" height="46" rx="8"/>
+            <text class="d-lbl" x="360" y="253" text-anchor="middle">Object storage — Backblaze B2 / S3</text>
+            <text class="d-lbl-sm" x="360" y="270" text-anchor="middle" style="fill:var(--teal-ink)">EXTERNAL · WP Offload Media moves big JPEGs here · ~$7/TB</text>
+            <!-- payments external -->
+            <rect class="d-box-shop d-ext" x="160" y="286" width="400" height="46" rx="8"/>
+            <text class="d-lbl" x="360" y="314" text-anchor="middle">Stripe / PayPal — EXTERNAL</text>
+          </svg>
+          <figcaption><b>Two external pieces (dashed).</b> Cheap object storage holds the heavy images so the host stays fast; a payment processor takes the money. You maintain the glue.</figcaption>
+        </figure>
+        <div class="specs">
+          <dl>
+            <dt>Cost</dt><dd>Hosting <span class="price">~$3–14 / mo</span> + object storage <span class="price">~$7/TB</span> + processor fees</dd>
+            <dt>Storage</dt><dd>Host gives only 10–50&nbsp;GB → <strong>offload images to object storage</strong> for real capacity</dd>
+            <dt>External storage?</dt><dd><span class="pill ext">Yes — object storage</span> (+ payment processor)</dd>
+            <dt>Sells / e-commerce</dt><dd><span class="pill yes">Yes</span> — Easy Digital Downloads suits pure file sales best</dd>
+            <dt>Lightroom</dt><dd>Via WP/LR Sync middleware (maps collections → Media Library)</dd>
+            <dt>Effort</dt><dd><span class="pill neutral">Highest</span> — you own updates, security, backups</dd>
+            <dt>Best for</dt><dd>Full control, custom design, and lowest cost <em>at large scale</em></dd>
+          </dl>
+          <div class="callout" style="margin-top:14px">
+            <span class="tag">Research note</span>
+            <p>Older guides recommend the <strong>Symbiostock</strong> plugin. It was <strong>discontinued in December 2023</strong> and pulled for a security issue — don’t build on it. The current path is <strong>Easy Digital Downloads</strong> (or WooCommerce) plus a media-offload plugin.</p>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- OPTION C -->
+    <article class="option" id="opt-custom">
+      <div class="head">
+        <span class="optkey">OPTION C</span>
+        <h3>Totally custom build</h3>
+        <span class="tagline">A storefront coded from scratch (Python or Node) — maximum control, you build &amp; run every layer</span>
+      </div>
+      <div class="body">
+        <figure>
+          <svg viewBox="0 0 580 360" role="img" aria-labelledby="t-c d-c">
+            <title id="t-c">Custom build stack</title>
+            <desc id="d-c">Lightroom exports JPEGs to a custom application you build in Python or Node, running on a rented cloud server with its own database, using external object storage for the image files and an external payment API.</desc>
+            <text class="d-row" x="150" y="43" text-anchor="end">Capture</text>
+            <text class="d-row" x="150" y="97" text-anchor="end">Website</text>
+            <text class="d-row" x="150" y="151" text-anchor="end">Search</text>
+            <text class="d-row" x="150" y="205" text-anchor="end">Checkout</text>
+            <text class="d-row" x="150" y="259" text-anchor="end">File storage</text>
+            <text class="d-row" x="150" y="313" text-anchor="end">Payments</text>
+            <rect class="d-box" x="160" y="16" width="400" height="46" rx="8"/>
+            <text class="d-lbl" x="360" y="44" text-anchor="middle">Lightroom → export JPEG → your upload tool</text>
+            <!-- big "you build it all" block spanning website+search+checkout -->
+            <rect class="d-box" x="160" y="70" width="400" height="154" rx="10"/>
+            <text class="d-head" x="360" y="110" text-anchor="middle" style="fill:var(--ink)">YOUR APPLICATION — PYTHON / NODE</text>
+            <text class="d-lbl" x="360" y="136" text-anchor="middle">on a cloud server you rent · ~$5–25/mo</text>
+            <text class="d-lbl-sm" x="360" y="160" text-anchor="middle">you write the gallery, the search, and the checkout</text>
+            <text class="d-lbl-sm" x="360" y="184" text-anchor="middle" style="fill:var(--teal-ink);font-weight:700">+ a database · ~$7–20/mo · photos, prices &amp; orders</text>
+            <!-- file storage external -->
+            <rect class="d-box-teal d-ext" x="160" y="232" width="400" height="46" rx="8"/>
+            <text class="d-lbl" x="360" y="253" text-anchor="middle">Object storage — Backblaze B2 / S3</text>
+            <text class="d-lbl-sm" x="360" y="270" text-anchor="middle" style="fill:var(--teal-ink)">EXTERNAL · ~$7/TB · you wire it in yourself</text>
+            <!-- payments external -->
+            <rect class="d-box-shop d-ext" x="160" y="286" width="400" height="46" rx="8"/>
+            <text class="d-lbl" x="360" y="314" text-anchor="middle">Stripe / PayPal API — EXTERNAL</text>
+          </svg>
+          <figcaption><b>Everything is yours to build.</b> The only parts you don’t write are the storage bucket and the payment API. Unlimited and fully bespoke — but the real cost is the <em>time</em> to build it and keep it running.</figcaption>
+        </figure>
+        <div class="specs">
+          <dl>
+            <dt>Running cost</dt><dd>Server <span class="price">~$5–25/mo</span> + database <span class="price">~$7–20/mo</span> + object storage <span class="price">~$7/TB</span> + ~2.9%&nbsp;+&nbsp;30¢/sale</dd>
+            <dt>Build cost</dt><dd><strong>Developer time</strong> — your hours or a hired dev. This is the dominant cost.</dd>
+            <dt>Storage</dt><dd><strong>Unlimited</strong> — you connect the app to object storage (B2 / S3) yourself</dd>
+            <dt>External storage?</dt><dd><span class="pill ext">Yes — object storage</span> (+ payment processor)</dd>
+            <dt>Sells / e-commerce</dt><dd><span class="pill yes">Yes</span> — but you build the cart, licensing &amp; delivery</dd>
+            <dt>Lightroom</dt><dd>No native plugin — export JPEGs and upload with your own tool</dd>
+            <dt>Effort</dt><dd><span class="pill neutral">Highest</span> — you own the code, security, uptime &amp; scaling</dd>
+            <dt>Best for</dt><dd>A specific vision no existing platform can deliver — ideally with a developer on hand</dd>
+          </dl>
+          <div class="callout" style="margin-top:14px">
+            <span class="tag">When custom is worth it</span>
+            <p>Only choose this if Options A and B genuinely can’t do what you need — you’d be building and maintaining real software. For most photographers, <strong>WordPress (Option B) gives most of the control for a fraction of the effort.</strong></p>
+          </div>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ===================== COMPARE ===================== -->
+<section id="compare">
+  <div class="wrap">
+    <p class="eyebrow"><span class="secnum">05</span> · Side by side</p>
+    <h2>The three storefronts at a glance</h2>
+    <div class="table-scroll">
+      <table>
+        <caption>Storefront comparison, June 2026. “External storage” = a separate service you sign up &amp; pay for to hold the sellable files.</caption>
+        <thead>
+          <tr>
+            <th>&nbsp;</th>
+            <th>A · Managed platform</th>
+            <th>B · WordPress</th>
+            <th>C · Totally custom</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Running cost</strong></td>
+            <td><span class="price">~$10–45/mo</span> flat</td>
+            <td><span class="price">~$3–14/mo</span> + $7/TB storage</td>
+            <td><span class="price">~$15–60/mo</span> infra + build time</td>
+          </tr>
+          <tr>
+            <td><strong>Storage included</strong></td>
+            <td>Unlimited JPEG (top tiers)</td>
+            <td>Only 10–50 GB on host</td>
+            <td>None — wire up your own</td>
+          </tr>
+          <tr>
+            <td><strong>External storage needed?</strong></td>
+            <td><span class="pill yes">No</span></td>
+            <td><span class="pill ext">Yes — object storage</span></td>
+            <td><span class="pill ext">Yes — object storage</span></td>
+          </tr>
+          <tr>
+            <td><strong>Sells &amp; delivers files</strong></td>
+            <td><span class="pill yes">Built in</span></td>
+            <td><span class="pill yes">Plugin (EDD)</span></td>
+            <td><span class="pill yes">You build it</span></td>
+          </tr>
+          <tr>
+            <td><strong>Per-sale cut</strong></td>
+            <td>0–10% (vendor-dependent)</td>
+            <td>Processor fee only (~3%)</td>
+            <td>Processor fee only (~3%)</td>
+          </tr>
+          <tr>
+            <td><strong>Technical effort</strong></td>
+            <td><span class="pill neutral">Lowest</span></td>
+            <td><span class="pill neutral">High</span></td>
+            <td><span class="pill neutral">Highest</span></td>
+          </tr>
+          <tr>
+            <td><strong>Design control</strong></td>
+            <td>Templates</td>
+            <td>Total</td>
+            <td>Total</td>
+          </tr>
+          <tr>
+            <td><strong>You maintain</strong></td>
+            <td>Nothing</td>
+            <td>Updates, security, backups</td>
+            <td>The whole app + servers</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="callout teal">
+      <span class="tag">How to read this</span>
+      <p>Effort and control rise from left to right. <strong>A</strong> trades money for convenience (pay monthly, do nothing). <strong>B</strong> is cheapest at scale but you become the IT department. <strong>C</strong> gives total control — at the price of building and running real software.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== DECIDE ===================== -->
+<section id="decide">
+  <div class="wrap">
+    <p class="eyebrow"><span class="secnum">06</span> · A nudge toward a choice</p>
+    <h2>Which one is probably right</h2>
+    <p class="lede">Not advice to follow blindly — just the most common fit for each situation, to give your own research a starting point.</p>
+    <div class="decide-grid">
+      <div class="decide-card">
+        <span class="if">If you want…</span>
+        <div class="then">To start selling now</div>
+        <p>…and never think about servers, pick a <strong>managed platform</strong> (Option A). SmugMug or PhotoShelter for unlimited JPEG storage and built-in checkout.</p>
+        <span class="cost">≈ $10–45 / month, all-in</span>
+      </div>
+      <div class="decide-card">
+        <span class="if">If you want…</span>
+        <div class="then">Lowest cost at scale</div>
+        <p>…and you’re comfortable maintaining a site, self-host <strong>WordPress</strong> (Option B) with Easy Digital Downloads and images offloaded to Backblaze B2.</p>
+        <span class="cost">≈ $10–20 / month + $7 per TB</span>
+      </div>
+      <div class="decide-card">
+        <span class="if">If you want…</span>
+        <div class="then">A one-of-a-kind site</div>
+        <p>…that no existing platform can produce — and you have a developer on hand — build it <strong>totally custom</strong> (Option C) in Python or Node. Most control, most work.</p>
+        <span class="cost">≈ $15–60 / month infra + build time</span>
+      </div>
+    </div>
+    <div class="callout">
+      <span class="tag">In every case</span>
+      <p>The storefront is separate from the <strong>archive</strong>. Whichever path you choose, keep the RAW masters in object storage under the <strong>3-2-1 rule</strong> (Sections 02–03). The shop can be rebuilt; the originals cannot.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== GLOSSARY ===================== -->
+<section id="glossary">
+  <div class="wrap">
+    <p class="eyebrow"><span class="secnum">07</span> · Plain definitions</p>
+    <h2>Glossary</h2>
+    <dl class="gloss">
+      <dt>Object storage</dt><dd>Cloud storage priced by the terabyte, built to hold huge numbers of files cheaply. No “synced folder” — you push/pull with an app.</dd>
+      <dt>Egress</dt><dd>The fee some providers charge to <em>download</em> your own files back out. The sneaky part of a cloud bill.</dd>
+      <dt>RAW vs JPEG</dt><dd>RAW = the camera’s big original negative. JPEG = the compressed export buyers actually receive.</dd>
+      <dt>3-2-1 rule</dt><dd>3 copies, on 2 media types, 1 kept off-site. The standard backup insurance for photographers.</dd>
+      <dt>Cloud server (VPS / PaaS)</dt><dd>A computer you rent in a data center to run a custom app, billed monthly (~$5–25). “PaaS” is a friendlier, more managed version of the same idea.</dd>
+      <dt>Managed database</dt><dd>A hosted database (usually PostgreSQL) a custom site uses to track its photos, prices, and orders.</dd>
+      <dt>Payment processor</dt><dd>A service like Stripe or PayPal that takes the card payment — roughly 2.9% + 30¢ per sale.</dd>
+      <dt>IPTC metadata</dt><dd>The caption/keyword tags embedded inside a photo. Storefront search engines read these to make images findable.</dd>
+      <dt>Media offloading</dt><dd>Automatically moving a website’s big image files to cheap object storage so the site itself stays small and fast.</dd>
+    </dl>
+  </div>
+</section>
+
+<!-- ===================== SOURCES ===================== -->
+<section id="sources">
+  <div class="wrap">
+    <p class="eyebrow"><span class="secnum">08</span> · Read it yourself</p>
+    <h2>Sources &amp; further reading</h2>
+    <p class="lede">Pricing and features change constantly. These are the official pages to confirm current numbers before you commit.</p>
+    <div class="src-cols">
+      <h3>Object storage</h3>
+      <ul>
+        <li><a href="https://www.backblaze.com/cloud-storage/pricing">Backblaze B2 pricing</a></li>
+        <li><a href="https://developers.cloudflare.com/r2/pricing/">Cloudflare R2 pricing</a></li>
+        <li><a href="https://aws.amazon.com/s3/pricing/">AWS S3 &amp; Glacier pricing</a></li>
+        <li><a href="https://wasabi.com/pricing">Wasabi pricing</a></li>
+      </ul>
+
+      <h3>Backup &amp; sync</h3>
+      <ul>
+        <li><a href="https://www.backblaze.com/cloud-backup/personal">Backblaze Personal Backup</a></li>
+        <li><a href="https://www.idrive.com/pricing">iDrive pricing</a></li>
+        <li><a href="https://www.backblaze.com/blog/the-3-2-1-backup-strategy/">The 3-2-1 backup strategy (explainer)</a></li>
+      </ul>
+
+      <h3>Managed platforms (Option A)</h3>
+      <ul>
+        <li><a href="https://www.smugmug.com/plans">SmugMug plans</a></li>
+        <li><a href="https://www.photoshelter.com/pricing">PhotoShelter pricing</a></li>
+        <li><a href="https://pixieset.com/pricing-website/">Pixieset pricing</a></li>
+        <li><a href="https://zenfolio.com/pricing/">Zenfolio pricing</a></li>
+      </ul>
+
+      <h3>WordPress (Option B)</h3>
+      <ul>
+        <li><a href="https://easydigitaldownloads.com/">Easy Digital Downloads</a></li>
+        <li><a href="https://woocommerce.com/">WooCommerce</a></li>
+        <li><a href="https://deliciousbrains.com/wp-offload-media/">WP Offload Media</a></li>
+      </ul>
+
+      <h3>Custom build (Option C)</h3>
+      <ul>
+        <li><a href="https://www.digitalocean.com/pricing/droplets">DigitalOcean droplet pricing</a></li>
+        <li><a href="https://render.com/pricing">Render pricing (app + Postgres)</a></li>
+        <li><a href="https://www.hetzner.com/cloud/">Hetzner Cloud pricing</a></li>
+        <li><a href="https://stripe.com/pricing">Stripe pricing</a></li>
+      </ul>
+
+      <h3>Background reading</h3>
+      <ul>
+        <li><a href="https://thedambook.com/">Peter Krogh — The DAM Book</a></li>
+        <li><a href="https://en.wikipedia.org/wiki/Stock_photography">Stock photography (overview)</a></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p class="fineprint">Compiled June 2026 from independent research for self-guided reading. Every price and storage figure is a list rate that changes often — always confirm on the provider’s official page (linked above) before deciding or buying. A few figures (Wasabi’s July 2026 increase, some platform commission rates, Google One’s 2026 plan reshuffle) were the least certain at compile time.</p>
+    <p class="totop" style="margin-top:18px"><a href="#concept">↑ Back to top</a></p>
+  </div>
+</footer>
+
+<script>
+  (function(){
+    var rates = [
+      {name:"S3 Glacier Deep", rate:1.01, note:"cold vault"},
+      {name:"Backblaze B2", rate:6.95, note:"the default"},
+      {name:"Cloudflare R2", rate:15.36, note:"$0 egress"},
+      {name:"AWS S3 Standard", rate:23.55, note:"+ egress"}
+    ];
+    var range = document.getElementById('est-range');
+    var grid  = document.getElementById('est-grid');
+    var tbOut = document.getElementById('est-tb');
+    if(!range || !grid) return;
+
+    function money(n){ return '$' + n.toLocaleString(undefined,{minimumFractionDigits:2, maximumFractionDigits:2}); }
+
+    function render(){
+      var tb = parseFloat(range.value);
+      tbOut.textContent = (tb % 1 === 0) ? tb : tb.toFixed(1);
+      var cheapest = Math.min.apply(null, rates.map(function(r){return r.rate;}));
+      var html = '';
+      rates.forEach(function(r){
+        var mo = tb * r.rate;
+        var cls = (r.rate === cheapest) ? 'est-card cheap' : 'est-card';
+        html += '<div class="'+cls+'">'
+              + '<div class="name">'+r.name+'</div>'
+              + '<div class="rate">$'+r.rate.toFixed(2)+'/TB · '+r.note+'</div>'
+              + '<div class="mo">'+money(mo)+'<span style="font-size:.6em;font-weight:400"> /mo</span></div>'
+              + '<div class="yr">'+money(mo*12)+' / year</div>'
+              + '</div>';
+      });
+      grid.innerHTML = html;
+    }
+    range.addEventListener('input', render);
+    render();
+  })();
+</script>
+
 </body>
 </html>
